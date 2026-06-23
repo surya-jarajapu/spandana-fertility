@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: 255 255 255;
+  --bg-elevated: 255 255 255;
+  --text: 15 23 42;
+  --text-muted: 100 116 139;
+  --border: 226 232 240;
+  --glass-bg: 255 255 255;
+  --glass-border: 255 255 255;
+}
+
+.dark {
+  --bg: 15 23 42;
+  --bg-elevated: 17 24 39;
+  --text: 248 250 252;
+  --text-muted: 148 163 184;
+  --border: 30 41 59;
+  --glass-bg: 17 24 39;
+  --glass-border: 255 255 255;
+}
+
+* {
+  border-color: rgb(var(--border));
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: rgb(var(--bg));
+  color: rgb(var(--text));
+  font-feature-settings: "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+::selection {
+  background-color: rgba(214, 51, 108, 0.25);
+}
+
+/* Visible keyboard focus ring across the site */
+:focus-visible {
+  outline: 2px solid rgb(214, 51, 108);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@layer utilities {
+  .glass {
+    background-color: rgba(var(--glass-bg), 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(var(--glass-border), 0.1);
+  }
+
+  .glass-strong {
+    background-color: rgba(var(--glass-bg), 0.8);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(var(--glass-border), 0.14);
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .gradient-text {
+    background-image: linear-gradient(120deg, #d6336c 0%, #6d28d9 60%, #06b6d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .scrollbar-none::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+@layer base {
+  h1, h2, h3, h4 {
+    font-family: var(--font-fraunces);
+    letter-spacing: -0.02em;
+  }
+}
