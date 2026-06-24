@@ -33,7 +33,7 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled ? "py-3" : "py-5"
+        scrolled ? "py-1.5" : "py-5",
       )}
     >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -41,8 +41,8 @@ export default function Navbar() {
           className={cn(
             "flex items-center justify-between rounded-2xl px-4 py-3 transition-all duration-300 sm:px-6",
             scrolled
-              ? "glass-strong shadow-glass dark:shadow-glass-dark"
-              : "bg-transparent"
+              ? "glass-strong bg-white/90 backdrop-blur-xl border border-white/20 shadow-glass dark:bg-slate-900/90"
+              : "bg-transparent",
           )}
         >
           {/* Logo */}
@@ -102,12 +102,12 @@ export default function Navbar() {
                     "rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:text-rose-500 dark:hover:text-rose-400",
                     pathname === link.href
                       ? "text-rose-500 dark:text-rose-400"
-                      : "text-ink-800 dark:text-slate-200"
+                      : "text-ink-800 dark:text-slate-200",
                   )}
                 >
                   {link.label}
                 </Link>
-              )
+              ),
             )}
           </nav>
 
@@ -139,7 +139,11 @@ export default function Navbar() {
               onClick={() => setMobileOpen((o) => !o)}
               className="flex h-9 w-9 items-center justify-center rounded-lg text-ink-700 dark:text-slate-200 lg:hidden"
             >
-              {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+              {mobileOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Menu className="h-5 w-5" />
+              )}
             </button>
           </div>
         </div>
@@ -156,9 +160,7 @@ export default function Navbar() {
             >
               <div className="flex flex-col gap-1 p-3">
                 {NAV_LINKS.flatMap((link) =>
-                  link.children
-                    ? [link, ...link.children]
-                    : [link]
+                  link.children ? [link, ...link.children] : [link],
                 ).map((link) => (
                   <Link
                     key={link.label + link.href}
